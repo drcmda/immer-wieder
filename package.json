@@ -1,0 +1,98 @@
+{
+  "name": "immer-wieder",
+  "version": "1.0.0",
+  "description": "🎯 React 16 context wrap with redux semantics powered by immer",
+  "main": "dist/immer-wieder",
+  "module": "dist/immer-wieder.es",
+  "sideEffects": false,
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "rollup -c",
+    "prepare": "npm run test && npm run build",
+    "test": ""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "jsxBracketSameLine": true,
+    "tabWidth": 2,
+    "printWidth": 80
+  },
+  "lint-staged": {
+    "*.{js,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drcmda/immer-wieder.git"
+  },
+  "keywords": [
+    "react",
+    "context",
+    "store",
+    "hoc",
+    "redux",
+    "immer"
+  ],
+  "author": "Paul Henschel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drcmda/immer-wieder/issues"
+  },
+  "homepage": "https://github.com/drcmda/immer-wieder#readme",
+  "devDependencies": {
+    "@babel/core": "7.0.0-beta.54",
+    "@babel/plugin-transform-runtime": "7.0.0-beta.54",
+    "@babel/preset-env": "7.0.0-beta.54",
+    "@babel/preset-react": "7.0.0-beta.54",
+    "@babel/preset-stage-2": "7.0.0-beta.54",
+    "@babel/runtime": "7.0.0-beta.54",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "23.4.0",
+    "babel-plugin-annotate-pure-calls": "0.3.0",
+    "babel-plugin-transform-react-remove-prop-types": "0.4.13",
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "1.1.1",
+    "enzyme-to-json": "3.3.4",
+    "husky": "^1.0.0-rc.13",
+    "jest": "23.4.1",
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.13.7",
+    "react": "16.4.1",
+    "react-dom": "16.4.1",
+    "rimraf": "2.6.2",
+    "rollup": "0.63.2",
+    "rollup-plugin-babel": "4.0.0-beta.2"
+  },
+  "peerDependencies": {
+    "prop-types": "15.x.x",
+    "react": ">= 16.3.1",
+    "react-dom": ">= 16.3.1"
+  },
+  "jest": {
+    "setupFiles": [
+      "./tests/jest.setup.js"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "jest"
+    ],
+    "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.jsx?$",
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  },
+  "dependencies": {
+    "immer": "^1.3.1"
+  }
+}

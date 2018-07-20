@@ -9,7 +9,7 @@
     "prebuild": "rimraf dist",
     "build": "rollup -c",
     "prepare": "npm run build",
-    "test": ""
+    "test": "echo no tests yet"
   },
   "husky": {
     "hooks": {

@@ -2,6 +2,6 @@
 
     npm install immer-wieder
 
-![](/assets/api.jpg)
+[![](/assets/api.jpg)](https://codesandbox.io/s/qvm2oz51mj)
 
-[Demo](https://codesandbox.io/s/52jv4pw3rn)
+[Demo](https://codesandbox.io/s/qvm2oz51mj)

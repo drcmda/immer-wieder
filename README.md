@@ -10,4 +10,6 @@ The provider will not re-render its contents on state changes like reacts would.
 
 [![](/assets/api.jpg)](https://codesandbox.io/s/qvm2oz51mj)
 
-[Demo](https://codesandbox.io/s/qvm2oz51mj)
+[Demo: Provider & Consumer](https://codesandbox.io/embed/qvm2oz51mj)
+
+[Demo: Middleware](https://codesandbox.io/embed/52on3pvywl)

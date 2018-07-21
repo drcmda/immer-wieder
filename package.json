@@ -1,6 +1,6 @@
 {
   "name": "immer-wieder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "🎯 React 16 context wrap with redux semantics powered by immer",
   "main": "dist/immer-wieder",
   "module": "dist/immer-wieder.es",

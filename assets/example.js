@@ -9,12 +9,12 @@ const { Provider, Consumer } = createContext(setState => ({
 
   // Actions can go right into state, or wrap them in further objects ...
   setUserName: (id, name) =>
-    // setState behaves like generic setState with immer semantics (draft)
-    setState((state, draft) => {
+    // setState behaves like generic setState with immer semantics
+    setState(draft => {
       // You can mutate the draft
       draft.users[id].name = name
       // Or return a reduced shallow clone of state like always
-      // return { ...state, users: { ...state.users, [id]: { ...state.users[id], name } } }
+      // return { ...draft, users: { ...draft.users, [id]: { ...draft.users[id], name } } }
     }),
 }))
 

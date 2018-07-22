@@ -2,7 +2,7 @@
 
     npm install immer-wieder
     
-`immer-wieder` behaves like your generic react 16 context provider/consumer with the distinction that you can provide actions (which either support setState reducers [or immer drafts, where you don't need to write out reducers any longer](https://github.com/mweststrate/immer)).
+`immer-wieder` behaves like your generic react 16 context provider/consumer with the distinction that you can provide actions (which either support setState reducers [or immer drafts, where you don't need to write out reducers any longer](https://github.com/mweststrate/immer)) and select state (where components only render if the state they subscribe to changes).
 
 [![](/assets/api.jpg)](https://codesandbox.io/s/qvm2oz51mj)
 

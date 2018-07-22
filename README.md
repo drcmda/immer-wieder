@@ -4,7 +4,7 @@
     
 `immer-wieder` behaves like your generic react 16 context provider/consumer with the distinction that you can:
 
-* provide actions (which either support setState reducers [or immer drafts, where you don't need to write out reducers any longer](https://github.com/mweststrate/immer)) 
+* provide actions (which support setState reducers [or immer drafts, where you don't need to write reducers any longer](https://github.com/mweststrate/immer)) 
 * and select state (where components only render if the state they subscribe to changes). 
 
 If you look at the ["code"](https://github.com/drcmda/immer-wieder/blob/master/src/index.js), it should become clear that it lets react do all the work in order to create as little surface for maintenance and bugs as possible.

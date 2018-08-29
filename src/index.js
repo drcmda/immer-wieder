@@ -40,7 +40,11 @@ export default function(actions) {
         const input = value || actions
         this.state = typeof input === 'function' ? input(this.update) : input
       }
-      update = (fn, cb) => this.setState(state => immer(state, fn), cb)
+      update = (fn, cb) =>
+        this.setState(
+          state => (typeof fn === 'function' ? immer(state, fn) : fn),
+          cb
+        )
       render() {
         return (
           <Context.Provider

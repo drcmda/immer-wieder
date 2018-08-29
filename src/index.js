@@ -38,10 +38,14 @@ export default function(actions) {
       constructor({ value }) {
         super()
         const input = value || actions
-        this.state = typeof input === 'function' ? input(this.update) : input
+        this.state =
+          typeof input === 'function'
+            ? input(this.setState, this.getState)
+            : input
       }
-      update = (fn, cb) =>
-        this.setState(
+      getState = fn => super.setState({}, () => fn(this.state))
+      setState = (fn, cb) =>
+        super.setState(
           state => (typeof fn === 'function' ? immer(state, fn) : fn),
           cb
         )

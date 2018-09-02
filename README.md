@@ -4,10 +4,12 @@
 
 `immer-wieder` behaves like your generic react 16 context provider/consumer with the distinction that you can:
 
-- provide actions (which support setState reducers [or immer drafts](https://github.com/mweststrate/immer), where you don't need to write reducers any longer)
+- provide actions (which support setState reducers [or Immer-drafts](https://github.com/mweststrate/immer), where you don't need to write reducers any longer)
 - and select state (where components only render if the state they subscribe to changes).
 
 If you look at the [code](https://github.com/drcmda/immer-wieder/blob/master/src/index.js), it should become clear that it lets react do all the work in order to create as little surface for maintenance and bugs as possible.
+
+## Usage
 
 ```jsx
 import createContext from 'immer-wieder'
@@ -62,3 +64,15 @@ const App = () => (
 [Demo: Provider & Consumer](https://codesandbox.io/embed/qvm2oz51mj)
 
 [Demo: Middleware](https://codesandbox.io/embed/52on3pvywl)
+
+## Inline mutations using `void`
+
+Draft mutations usually warrant a code block, since a return denotes a overwrite in Immer. Sometimes that can stretch code a little more than you might be comfortable with. In such cases you can use javascripts [`void`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/void) operator, which evaluates expressions and returns `undefined`.
+
+ ```javascript
+// Single mutation
+setState(state => void (state.user.age += 1))
+
+ // Multiple mutations
+setState(state => void (state.user.age += 1, state.user.height = 186))
+```

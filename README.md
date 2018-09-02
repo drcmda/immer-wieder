@@ -28,10 +28,10 @@ const { Provider, Consumer } = createContext((setState, getState) => ({
     cacheState: id => getState(state => fetch(`/backend?cache=${state.stringify()}`),
     // Otherwise setState behaves like always
     removeAll: () => setState({ bands: {}, ids: [] }),
-    // With the distinction that you can use immer semantics
+    // With the distinction that you can use Immer semantics
     changeName: (id, name) =>
       setState(state => {
-        // You are allowed to mutate state
+        // You are allowed to mutate state in here ...
         state.bands[id].name = name
         // Or return a reduced shallow clone of state like always
         // return { ...state, users: { ...state.users, [id]: { ...state.users[id], name } } }

@@ -58,6 +58,11 @@ export default function(actions) {
         )
       }
     },
+    hoc: (select = props => props) => Component => props => (
+      <res.Consumer select={state => select(state, props)}>
+        {selectedProps => <Component {...props} {...selectedProps} />}
+      </res.Consumer>
+    ),
   }
   return res
 }

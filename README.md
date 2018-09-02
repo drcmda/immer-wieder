@@ -69,10 +69,33 @@ const App = () => (
 
 Draft mutations usually warrant a code block, since a return denotes a overwrite in Immer. Sometimes that can stretch code a little more than you might be comfortable with. In such cases you can use javascripts [`void`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/void) operator, which evaluates expressions and returns `undefined`.
 
- ```javascript
+```javascript
 // Single mutation
 setState(state => void (state.user.age += 1))
 
- // Multiple mutations
-setState(state => void (state.user.age += 1, state.user.height = 186))
+// Multiple mutations
+setState(state => void ((state.user.age += 1), (state.user.height = 186)))
+```
+
+## What about HOCs?
+
+Sometimes you need to access render props in lifecycles or you just don't like them at all.
+
+```jsx
+import createContext from 'immer-wieder'
+
+const { Provider, hoc } = createContext((setState, getState) => ({ ... }))
+
+@hoc((store, props) => ({ item: store.items[props.id] }))
+class Item extends Component {
+  render() {
+    return <div>{this.props.item</div>
+  }
+}
+
+const App = () => (
+  <Provider>
+    <Item id={1} />
+  </Provider>
+)
 ```

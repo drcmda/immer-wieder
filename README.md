@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/drcmda/immer-wieder.svg?branch=master)](https://travis-ci.org/drcmda/immer-wieder) [![npm version](https://badge.fury.io/js/immer-wieder.svg)](https://badge.fury.io/js/immer-wieder)
+<span class="badge-patreon"><a href="https://www.patreon.com/0xca0a" title="Donate to this project using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon donate button" /></a></span> [![Build Status](https://travis-ci.org/drcmda/immer-wieder.svg?branch=master)](https://travis-ci.org/drcmda/immer-wieder) [![npm version](https://badge.fury.io/js/immer-wieder.svg)](https://badge.fury.io/js/immer-wieder)
 
     npm install immer-wieder
 
@@ -99,3 +99,7 @@ const App = () => (
   </Provider>
 )
 ```
+
+## Contributions
+
+All my open source projects are done in my free time, if you like any of them, consider helping out, all contributions are welcome as well as donations, for instance through [Patreon](https://www.patreon.com/0xca0a).

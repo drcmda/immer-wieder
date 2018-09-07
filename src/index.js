@@ -43,8 +43,15 @@ export default function(actions) {
             ? input(this.setState, this.getState)
             : input
       }
-      getState = fn => super.setState({}, () => fn(this.state))
+      componentDidMount() {
+        this.mounted = true
+      }
+      componentWillUnmount() {
+        this.mounted = true
+      }
+      getState = fn => this.mounted && super.setState({}, () => fn(this.state))
       setState = (fn, cb) =>
+        this.mounted &&
         super.setState(
           state => (typeof fn === 'function' ? immer(state, fn) : fn),
           cb

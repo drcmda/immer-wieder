@@ -89,7 +89,7 @@ const { Provider, hoc } = createContext((setState, getState) => ({ ... }))
 @hoc((store, props) => ({ item: store.items[props.id] }))
 class Item extends Component {
   render() {
-    return <div>{this.props.item</div>
+    return <div>{this.props.item}</div>
   }
 }
 

@@ -72,7 +72,6 @@ const App = () => (
 )
 ```
 
-````
 [Demo: Provider & Consumer](https://codesandbox.io/embed/qvm2oz51mj)
 
 ## Inline mutations using `void`
@@ -85,7 +84,7 @@ setState(state => void (state.user.age += 1))
 
 // Multiple mutations
 setState(state => void ((state.user.age += 1), (state.user.height = 186)))
-````
+```
 
 ## What about HOCs?
 

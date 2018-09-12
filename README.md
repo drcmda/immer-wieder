@@ -23,18 +23,25 @@ import createContext from 'immer-wieder'
 ```jsx
 const { Provider, Consumer } = createContext((setState, getState) => ({
   // Everything in here is your state
-  filter: '*',
-  // Including actions, you can wrap and nest them if you like ...
+  bands: {
+    0: { name: 'Flipper' },
+    1: { name: 'Melt Banana' },
+  },
+  ids: [0, 1],
+  // ... including actions
+  // You can wrap and nest them, too, makes it easier to access them later ...
   actions: {
     // Actions do not have to mutate state at all, you can use getState to fetch state
     cacheState: id => getState(state => fetch(`/backend?cache=${state.stringify()}`),
-    // setState behaves like always with the distinction that you can mutate state
-    setFilter: text =>
+    // Otherwise setState behaves like always
+    removeAll: () => setState({ bands: {}, ids: [] }),
+    // With the distinction that you can use Immer semantics
+    changeName: (id, name) =>
       setState(state => {
         // You are allowed to mutate state in here ...
-        state.filter = text
+        state.bands[id].name = name
         // Or return a reduced shallow clone of state like always
-        // return { ...state, filter }
+        // return { ...state, users: { ...state.users, [id]: { ...state.users[id], name } } }
       }),
   },
 }))
@@ -43,15 +50,29 @@ const { Provider, Consumer } = createContext((setState, getState) => ({
 ## Provide once, then consume, anywhere within the providers tree
 
 ```jsx
+const EditDetails = ({ id }) => (
+  // Select is optional, if present the component renders only when the state you select changes
+  // Actions can be fetched right from the store
+  <Consumer select={store => ({ ...store.bands[id], ...store.actions })}>
+    {({ name, changeName }) => (
+      <div>
+        <h1>{name}</h1>
+        <input value={name} onChange={e => changeName(id, e.target.value)} />
+      </div>
+    )}
+  </Consumer>
+)
+
 const App = () => (
   <Provider>
-    <Consumer select={store => store.filter}>
-      {filter => ids.map(id => <EditDetails key={id} id={id} />)}
+    <Consumer select={store => store.ids}>
+      {ids => ids.map(id => <EditDetails key={id} id={id} />)}
     </Consumer>
   </Provider>
 )
 ```
 
+````
 [Demo: Provider & Consumer](https://codesandbox.io/embed/qvm2oz51mj)
 
 ## Inline mutations using `void`
@@ -64,7 +85,7 @@ setState(state => void (state.user.age += 1))
 
 // Multiple mutations
 setState(state => void ((state.user.age += 1), (state.user.height = 186)))
-```
+````
 
 ## What about HOCs?
 

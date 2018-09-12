@@ -1,6 +1,6 @@
 <span class="badge-patreon"><a href="https://www.patreon.com/0xca0a" title="Donate to this project using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon donate button" /></a></span> [![Build Status](https://travis-ci.org/drcmda/immer-wieder.svg?branch=master)](https://travis-ci.org/drcmda/immer-wieder) [![npm version](https://badge.fury.io/js/immer-wieder.svg)](https://badge.fury.io/js/immer-wieder)
 
-`immer-wieder` is a small api-compatible wrap around Reacts context, behaving in the same way with the distinction that you can
+`immer-wieder` is an api-compatible wrap around Reacts context, behaving the same way with the distinction that you can
 
 1. provide actions
 2. mutate state directly instead of writing reducers (it's using [immer](https://github.com/mweststrate/immer))

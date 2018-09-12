@@ -83,7 +83,7 @@ Draft mutations usually warrant a code block, since a return denotes a overwrite
 setState(state => void (state.user.age += 1))
 
 // Multiple mutations
-setState(state => void ((state.user.age += 1), (state.user.height = 186)))
+setState(state => void (state.user.age += 1, state.user.height = 186))
 ```
 
 ## What about HOCs?

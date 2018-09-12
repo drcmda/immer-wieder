@@ -11,16 +11,6 @@ class RenderPure extends PureComponent {
 export default function(actions) {
   const Context = React.createContext()
   const res = {
-    Middleware: ({ select, children }) => (
-      <res.Consumer select={props => immer(props, select)}>
-        {props => (
-          <Context.Provider
-            value={props}
-            children={<RenderPure children={children} />}
-          />
-        )}
-      </res.Consumer>
-    ),
     Consumer: ({ select = props => props, children }) => {
       const fn = ({ __obj, ...rest }) => children(__obj ? rest : rest.pick)
       return (
@@ -52,10 +42,7 @@ export default function(actions) {
       getState = fn => this.mounted && super.setState({}, () => fn(this.state))
       setState = (fn, cb) =>
         this.mounted &&
-        super.setState(
-          state => (typeof fn === 'function' ? immer(state, fn) : fn),
-          cb
-        )
+        super.setState(s => (typeof fn === 'function' ? immer(s, fn) : fn), cb)
       render() {
         return (
           <Context.Provider
@@ -66,9 +53,10 @@ export default function(actions) {
       }
     },
     hoc: (select = props => props) => Component => props => (
-      <res.Consumer select={state => select(state, props)}>
-        {selectedProps => <Component {...props} {...selectedProps} />}
-      </res.Consumer>
+      <res.Consumer
+        select={state => select(state, props)}
+        children={selectedProps => <Component {...props} {...selectedProps} />}
+      />
     ),
   }
   return res

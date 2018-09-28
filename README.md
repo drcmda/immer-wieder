@@ -28,8 +28,7 @@ const { Provider, Consumer } = createContext((setState, getState) => ({
     1: { name: 'Melt Banana' },
   },
   ids: [0, 1],
-  // ... including actions
-  // You can wrap and nest them, too, makes it easier to access them later ...
+  // Including actions, which you can wrap and nest, makes it easier to access them later ...
   actions: {
     // Actions do not have to mutate state at all, use getState to access current state
     cacheState: id => getState(state => fetch(`/backend?cache=${state.stringify()}`),

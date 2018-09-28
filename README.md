@@ -43,7 +43,7 @@ const { Provider, Consumer } = createContext((setState, getState) => ({
     },
     // Otherwise setState behaves like always
     removeAll: () => setState({ bands: {}, ids: [] }),
-    // With the distinction that you can use Immer semantics
+    // With the distinction that you mutate drafts, thanks to immer
     changeName: (id, name) =>
       setState(state => {
         // You are allowed to mutate state in here ...

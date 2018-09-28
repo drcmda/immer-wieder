@@ -33,6 +33,15 @@ const { Provider, Consumer } = createContext((setState, getState) => ({
   actions: {
     // Actions do not have to mutate state at all, use getState to access current state
     cacheState: id => getState(state => fetch(`/backend?cache=${state.stringify()}`),
+    // Actions can be async naturally
+    fetachState: async () => {
+      try {
+        const res = await fetch(`/backend?state`)
+        setState(await res.json())
+      } catch(error) {
+        setState({ error })
+      }
+    },
     // Otherwise setState behaves like always
     removeAll: () => setState({ bands: {}, ids: [] }),
     // With the distinction that you can use Immer semantics

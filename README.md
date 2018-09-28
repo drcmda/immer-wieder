@@ -29,7 +29,7 @@ const { Provider, Consumer } = createContext((setState, getState) => ({
   },
   ids: [0, 1],
   // Including actions, which you can wrap and nest, makes it easier to access them later ...
-  actions: {
+  someActions: {
     // Actions do not have to mutate state at all, use getState to access current state
     cacheState: id => getState(state => fetch(`/backend?cache=${state.stringify()}`),
     // Actions can be async naturally
@@ -61,7 +61,7 @@ const { Provider, Consumer } = createContext((setState, getState) => ({
 const EditDetails = ({ id }) => (
   // Select is optional, if present the component renders only when the state you select changes
   // Actions can be fetched right from the store
-  <Consumer select={store => ({ ...store.bands[id], ...store.actions })}>
+  <Consumer select={store => ({ ...store.bands[id], ...store.someActions })}>
     {({ name, changeName }) => (
       <div>
         <h1>{name}</h1>

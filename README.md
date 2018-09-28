@@ -31,7 +31,7 @@ const { Provider, Consumer } = createContext((setState, getState) => ({
   // ... including actions
   // You can wrap and nest them, too, makes it easier to access them later ...
   actions: {
-    // Actions do not have to mutate state at all, you can use getState to fetch state
+    // Actions do not have to mutate state at all, use getState to access current state
     cacheState: id => getState(state => fetch(`/backend?cache=${state.stringify()}`),
     // Otherwise setState behaves like always
     removeAll: () => setState({ bands: {}, ids: [] }),

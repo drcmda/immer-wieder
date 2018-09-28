@@ -34,7 +34,7 @@ const { Provider, Consumer } = createContext((setState, getState) => ({
     // Actions do not have to mutate state at all, use getState to access current state
     cacheState: id => getState(state => fetch(`/backend?cache=${state.stringify()}`),
     // Actions can be async naturally
-    fetachState: async () => {
+    fetchState: async () => {
       try {
         const res = await fetch(`/backend?state`)
         setState(await res.json())

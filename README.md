@@ -58,6 +58,15 @@ const { Provider, Consumer } = createContext((setState, getState) => ({
 ## Provide once, then consume, anywhere within the providers tree
 
 ```jsx
+const App = () => (
+  // Provide state, everything withing can have selective access to it
+  <Provider>
+    <Consumer select={store => store.ids}>
+      {ids => ids.map(id => <EditDetails key={id} id={id} />)}
+    </Consumer>
+  </Provider>
+)
+
 const EditDetails = ({ id }) => (
   // Select is optional, if present the component renders only when the state you select changes
   // Actions can be fetched right from the store
@@ -69,14 +78,6 @@ const EditDetails = ({ id }) => (
       </div>
     )}
   </Consumer>
-)
-
-const App = () => (
-  <Provider>
-    <Consumer select={store => store.ids}>
-      {ids => ids.map(id => <EditDetails key={id} id={id} />)}
-    </Consumer>
-  </Provider>
 )
 ```
 

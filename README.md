@@ -85,7 +85,7 @@ const EditDetails = ({ id }) => (
 
 ## Inline mutations using `void`
 
-Draft mutations usually warrant a code block, since a return denotes a overwrite in Immer. Sometimes that can stretch code a little more than you might be comfortable with. In such cases you can use javascripts [`void`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/void) operator, which evaluates expressions and returns `undefined`.
+Draft mutations usually warrant a code block, since a return denotes a overwrite in immer. Sometimes that can stretch code a little more than you might be comfortable with. In such cases you can use javascripts [`void`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/void) operator, which evaluates expressions and returns `undefined`.
 
 ```javascript
 // Single mutation
@@ -97,7 +97,7 @@ setState(state => void (state.user.age += 1, state.user.height = 186))
 
 ## What about HOCs?
 
-Sometimes you need to access render props in lifecycles or you just don't like them at all.
+Sometimes you need to access state in lifecycles or maybe you just don't like render props at all.
 
 ```jsx
 import createContext from 'immer-wieder'

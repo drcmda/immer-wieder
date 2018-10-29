@@ -37,7 +37,7 @@ export default function(actions) {
         this.mounted = true
       }
       componentWillUnmount() {
-        this.mounted = true
+        this.mounted = false
       }
       getState = fn => this.mounted && super.setState({}, () => fn(this.state))
       setState = (fn, cb) =>

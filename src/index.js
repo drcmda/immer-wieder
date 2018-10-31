@@ -33,15 +33,13 @@ export default function(actions) {
             ? input(this.setState, this.getState)
             : input
       }
-      componentDidMount() {
-        this.mounted = true
-      }
       componentWillUnmount() {
-        this.mounted = false
+        this.unmounted = true
       }
-      getState = fn => this.mounted && super.setState({}, () => fn(this.state))
+      getState = fn =>
+        !this.unmounted && super.setState({}, () => fn(this.state))
       setState = (fn, cb) =>
-        this.mounted &&
+        !this.unmounted &&
         super.setState(s => (typeof fn === 'function' ? immer(s, fn) : fn), cb)
       render() {
         return (
